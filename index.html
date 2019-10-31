@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Gif Project</title>
+     <!-- Added link to the jQuery Library -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+     <!-- Added link to the .js file -->
+     <script src="assets/javascript/app.js"></script>
+    <style type="text/css">
+      button,
+      div,
+      form,
+      input {
+        margin: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Gif Topics</h1>
+
+      <!-- Rendered Buttons will get Dumped Here  -->
+      <div id="buttons-view"></div>
+
+      <form id="topic-form">
+        <label for="topic-input">Add Topic</label>
+        <input type="text" id="topic-input" />
+        <br />
+
+        <!-- Button triggers new movie to be added -->
+        <input id="add-topic" type="submit" value="Add Topic!" />
+      </form>
+
+      <!-- Movies will Get Dumped Here -->
+      <div id="topic-view"></div>
+    </div>
+  </body>
+</html>
