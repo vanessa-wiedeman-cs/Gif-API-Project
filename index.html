@@ -1,41 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Gif Project</title>
-     <!-- Added link to the jQuery Library -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gif Project</title>
+        <!-- Added link to the jQuery Library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-     <!-- Added link to the .js file -->
-     <script src="assets/javascript/app.js"></script>
-    <style type="text/css">
-      button,
-      div,
-      form,
-      input {
-        margin: 10px;
-      }
-    </style>
-  </head>
+        <!-- Added link to the .js file -->
+        <script src="assets/javascript/app.js"></script>
 
-  <body>
-    <div class="container">
-      <h1>Gif Topics</h1>
+        <!-- Added a link to Bootstrap-->
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        />
+        <style type="text/css">
+            button,
+            div,
+            form,
+            input {
+                margin: 10px;
+            }
+        </style>
+    </head>
 
-      <!-- Rendered Buttons will get Dumped Here  -->
-      <div id="buttons-view"></div>
+    <body style="background-image: url('assets/images/background.jpg')">
+        <div class="container bg-secondary rounded">
+            <h1 class="mx-auto">Gif Topics</h1>
 
-      <form id="topic-form">
-        <label for="topic-input">Add Topic</label>
-        <input type="text" id="topic-input" />
-        <br />
+            <!-- Rendered Buttons will get Dumped Here  -->
+            <div id="buttons-view" class="mx-auto"></div>
 
-        <!-- Button triggers new movie to be added -->
-        <input id="add-topic" type="submit" value="Add Topic!" />
-      </form>
+            <form id="topic-form">
+                <label for="topic-input" class="bg-light rounded p-1">New Topic</label>
+                <input type="text" id="topic-input" />
+                <br />
 
-      <!-- Movies will Get Dumped Here -->
-      <div id="topic-view"></div>
-    </div>
-  </body>
+                <!-- Button triggers new movie to be added -->
+                <input class="btn btn-dark bg-info btn-outline-dark btn mx-auto" id="add-topic" type="submit" value="Add Topic!" />
+                <button
+                    id="clear"
+                    class="btn btn-dark bg-info btn-outline-dark btn mx-auto"
+                    type="button"
+                >
+                    Clear Topics
+                </button>
+                <button
+                    id="delete"
+                    class="btn btn-dark bg-info btn-outline-dark btn m-3"
+                    type="button"
+                >
+                    Delete last Topic
+                </button>
+            </form>
+
+            <!-- Movies will Get Dumped Here -->
+            <div id="topic-view"></div>
+        </div>
+    </body>
 </html>
