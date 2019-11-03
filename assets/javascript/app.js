@@ -26,22 +26,24 @@ $(document).ready(function() {
     $("#delete").on("click", function(event) {
         deleteLast();
     });
-
+    //unpauses/pauses gifs uses the attributes to manipulate the state
+    //of the gif
     function unpause() {
         var state = $(this).attr("data-state");
         if (state === "still") {
-			   
             var newSrc = $(this).attr("data-animate");
             $(this).attr("src", newSrc);
             $(this).attr("data-state", "animate");
-        }
-        else {
+        } else {
             var newSrc = $(this).attr("data-still");
             $(this).attr("src", newSrc);
             $(this).attr("data-state", "still");
         }
     }
-
+    /*Display gif set resets the view to empty and then takes the 
+    topic html text and pulls 10 gifs with that topic name at a G rating. 
+    The gifs are given attributes for pausing and bootstraps css classes.
+    */
     function displayGifSet() {
         $("#topic-view").empty();
         var gifTopic = $(this).attr("data-name");
@@ -55,17 +57,21 @@ $(document).ready(function() {
                 var gifDiv = $("<div>");
                 var p = $("<div>").text("Rating: " + response.data[x].rating);
                 var topicGifs = $("<img>");
-                topicGifs.attr("src", response.data[x].images.fixed_height.url);
+                topicGifs.attr(
+                    "src",
+                    response.data[x].images.fixed_height_still.url
+                );
                 gifDiv.append(topicGifs);
                 gifDiv.append(p);
-
-                gifDiv.attr({
-                    "data-still": response.data[x].images.original_still.url,
-                    "data-animate": response.data[x].images.original.url,
-                    "data-state": "still"
+                topicGifs.addClass("unpause");
+                topicGifs.attr({
+                    "data-still":
+                        response.data[x].images.fixed_height_still.url,
+                    "data-animate": response.data[x].images.fixed_height.url,
+                    "data-state": "still",
                 });
 
-                gifDiv.addClass("unpause card w-25");
+                gifDiv.addClass("card w-25");
                 p.addClass("card-footer text-center");
                 $("#topic-view").append(gifDiv);
             }
@@ -105,7 +111,7 @@ $(document).ready(function() {
             topics.pop();
         }
     }
-
+    //removes last topic button incase of typos!
     function deleteLast() {
         topics.pop();
         renderButtons();
