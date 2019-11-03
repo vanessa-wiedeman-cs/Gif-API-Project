@@ -33,11 +33,16 @@
             <div id="buttons-view" class="mx-auto"></div>
 
             <form id="topic-form">
-                <label for="topic-input" class="bg-light rounded p-1">New Topic</label>
+                <div class="card">
+                
+                        <div class="card-header">
+                               New Topic
+                              </div>
                 <input type="text" id="topic-input" />
                 <br />
-
-                <!-- Button triggers new movie to be added -->
+            </div>
+            <div>  
+            <!-- Button triggers new topic to be added -->
                 <input class="btn btn-dark bg-info btn-outline-dark btn mx-auto" id="add-topic" type="submit" value="Add Topic!" />
                 <button
                     id="clear"
@@ -53,9 +58,10 @@
                 >
                     Delete last Topic
                 </button>
+            </div>
             </form>
 
-            <!-- Movies will Get Dumped Here -->
+            <!-- gifs will Get Dumped Here -->
             <div id="topic-view"></div>
         </div>
     </body>

@@ -1,10 +1,8 @@
 // Initial array of movies
 var topics = ["cat", "dog", "bird", "hamster"];
 
-
 //ready document for JQuery
 $(document).ready(function() {
-    
     // Button click functions Add button and Clear buttons
     $("#add-topic").on("click", function(event) {
         event.preventDefault();
@@ -29,11 +27,49 @@ $(document).ready(function() {
         deleteLast();
     });
 
-    function displayGifSet(){
-         var gifTopic = $(this).attr("data-name");
-         var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=N6BRZIEjEPqE4Wj9E3zpXDZqF3OvWe8p&q=" + gifTopic + "&limit=10&offset=0&rating=G&lang=en";
-        
+    function unpause() {
+        var state = $(this).attr("data-state");
+        if (state === "still") {
+			   
+            var newSrc = $(this).attr("data-animate");
+            $(this).attr("src", newSrc);
+            $(this).attr("data-state", "animate");
+        }
+        else {
+            var newSrc = $(this).attr("data-still");
+            $(this).attr("src", newSrc);
+            $(this).attr("data-state", "still");
+        }
+    }
 
+    function displayGifSet() {
+        $("#topic-view").empty();
+        var gifTopic = $(this).attr("data-name");
+        var queryURL =
+            "https://api.giphy.com/v1/gifs/search?api_key=N6BRZIEjEPqE4Wj9E3zpXDZqF3OvWe8p&q=" +
+            gifTopic +
+            "&limit=10&offset=0&rating=G&lang=en";
+
+        $.ajax({ url: queryURL, method: "GET" }).done(function(response) {
+            for (var x = 0; x < response.data.length; x++) {
+                var gifDiv = $("<div>");
+                var p = $("<div>").text("Rating: " + response.data[x].rating);
+                var topicGifs = $("<img>");
+                topicGifs.attr("src", response.data[x].images.fixed_height.url);
+                gifDiv.append(topicGifs);
+                gifDiv.append(p);
+
+                gifDiv.attr({
+                    "data-still": response.data[x].images.original_still.url,
+                    "data-animate": response.data[x].images.original.url,
+                    "data-state": "still"
+                });
+
+                gifDiv.addClass("unpause card w-25");
+                p.addClass("card-footer text-center");
+                $("#topic-view").append(gifDiv);
+            }
+        });
     }
 
     // Function for displaying buttons
@@ -61,7 +97,6 @@ $(document).ready(function() {
             // Adding the button to the buttons-view div
             $("#buttons-view").append(a);
         }
-
     }
     //function for clearing buttons
     function clearButtons() {
@@ -78,6 +113,7 @@ $(document).ready(function() {
     // Adding a click event listener to all elements with a class of "#topic-btn"
     // $(document).on("click", "#topic-btn", displayGifSet);
     $(document).on("click", ".testClass", displayGifSet);
-    // Calling the renderButtons function to display the intial buttons 
+    $(document).on("click", ".unpause", unpause);
+    // Calling the renderButtons function to display the intial buttons
     renderButtons();
 });
