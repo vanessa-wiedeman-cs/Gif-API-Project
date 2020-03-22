@@ -21,7 +21,7 @@
   - Quality coding standards using Prettier (indentation, scoping, naming)
 
   - Deployed (GitHub Pages)
-  
+    
   
   
   
