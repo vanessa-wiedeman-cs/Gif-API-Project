@@ -1,9 +1,9 @@
 # Gif-API-Project
 
--Project Goal: Project using Giphy API. In this project we aim to make topic buttons that allow the user to pull up gifs related to that topic name. 
+- Project Goal: Project using Giphy API. In this project we aim to make topic buttons that allow the user to pull up gifs related to that topic name. 
   
- -Project link: https://vanessa-wiedeman-cs.github.io/Gif-API-Project/
- -Note: Very Blue themed as animal gifs are relaxing to look at!
+ - Project link: https://vanessa-wiedeman-cs.github.io/Gif-API-Project/
+  - **Note: Very Blue themed as animal gifs are relaxing to look at!**
 
 - Requirements:
 
