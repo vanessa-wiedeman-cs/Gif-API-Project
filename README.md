@@ -8,11 +8,11 @@
  - Project link: https://vanessa-wiedeman-cs.github.io/Gif-API-Project/
     - **Note: Very Blue themed as animal gifs are relaxing to look at!**
 
-- Requirements:
+- Requirements: 
 
-  - Uses a gif APIs
+  - Uses a gif APIs 
 
-  - Uses AJAX to pull data
+  - Uses AJAX to pull data 
 
   - Uses JS
 
